@@ -8,7 +8,7 @@ just run ->
 
 bundle install
 
-update database.yml to your local machine (its sqlite3 here)
+update database.yml to your local machine database (its sqlite3 here)
 
 run  -> 
 
