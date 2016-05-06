@@ -1,6 +1,8 @@
 == Minimal blogger app 
 
--> use of react.js 
+This is a leightweight rails app with some react.js demonstration code and funky code snippets.
+Be like a rainbow.
+
 
 just run -> 
 
