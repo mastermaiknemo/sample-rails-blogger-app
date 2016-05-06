@@ -1,0 +1,20 @@
+<h2> All Blogposts </h2>
+
+<table class='table'>
+<tr>
+  <th><%= sortable "title" %></th>
+  <th><%= sortable "author" %></th>
+
+</tr>
+<% @blogposts.each do |d| %>
+
+<tr>
+<td>
+<%= link_to d.title,  single_path(:id => d.id)%>
+</td>
+<td><%= d.author %>
+</td>
+</tr>
+
+<% end %>
+</table>

@@ -1,0 +1,11 @@
+<h2><%= @blogpost.title %> </h2>
+
+<%= @blogpost.content.html_safe %>
+
+<hr>
+<%= render 'layouts/comments' %>
+<% @blogpost.comments.each do |c| %>
+	<%= c.author %>
+	<%= c.content %>
+<% end %>
+<%# render :text => renderActionInOtherController(CommentsController,:index,"params").html_safe %>

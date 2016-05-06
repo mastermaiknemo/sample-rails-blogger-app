@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Promoter</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+<div class='container'>
+<h2><div id='rainbow'></div></h2>
+<%= render 'layouts/navbar' %>
+<%= yield %>
+</div>
+</body>
+
+<script>
+function rainbow(str){
+  phase = 10000000000000;
+  center = 128;
+  width = 128;
+  frequency = Math.PI*2/str.length;
+  for (var i = 0; i < str.length; ++i)
+  {
+    var hexaStr = "0123456789ABCDEF";
+    red   = Math.sin(frequency*i+2+phase) * width + center;
+    green = Math.sin(frequency*i+0+phase) * width + center;
+    blue  = Math.sin(frequency*i+4+phase) * width + center;
+    $("#rainbow").append( '<font color="' + '#' +
+      String(hexaStr.substr((red >> 4) & 0x0F,1)) + 
+      hexaStr.substr(red & 0x0F,1) +
+      String(hexaStr.substr((green >> 4) & 0x0F,1)) + 
+      hexaStr.substr(green & 0x0F,1) + 
+      String(hexaStr.substr((blue >> 4) & 0x0F,1)) + 
+      hexaStr.substr(blue & 0x0F,1) + '">' + 
+      str.substr(i,1) + '</font>');
+  }
+}
+        
+rainbow('Leightweight Blogger');
+</script>
+</html>

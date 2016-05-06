@@ -1,0 +1,14 @@
+<%  @presenter = {
+      :comments => @comments,
+      :form => {
+        :action => comments_path,
+        :csrf_param => request_forgery_protection_token,
+        :csrf_token => form_authenticity_token,
+        :blogpost_ident => "blogpost_id",
+        :blogpost_id => @blogpost.id
+      }
+    }
+    %>
+<%= react_component('CommentBox', 
+                    {:presenter => @presenter.to_json}, 
+                    {:prerender => true}) %>

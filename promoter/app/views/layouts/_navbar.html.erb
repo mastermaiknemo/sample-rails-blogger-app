@@ -1,0 +1,29 @@
+<nav class='nav navbar' style="">
+
+	<ul class='nav navbar-nav'>
+
+				<% if blogger_signed_in? %>
+		  <li>
+		  <%= link_to('Logout', destroy_blogger_session_path, :method => :delete) %>        
+		  </li>
+		<% else %>
+		  <li>
+		  <%= nav_link_to('Login', new_blogger_session_path, style: "color:#5cb85c;")  %>  
+		  </li>		
+		<% end %>
+
+		<!-- nav_link_to : nav_link_to 'Grundlagen - Vertrauen', grundlagen_vertrauen_path, style: "color:black;" -->
+		<li>
+			<%= nav_link_to 'New Blogpost', new_blogpost_path, style: "color:#5cb85c;" %>
+		</li>
+			<li>
+			<%= nav_link_to 'All Blogposts', blogposts_path, style: "color:#5cb85c;" %>
+		</li>
+	<li>
+			<%= nav_link_to 'My Blogposts', bloggerblogposts_path, style: "color:#5cb85c;" %>
+		</li>
+
+	</ul>
+
+</nav>
+

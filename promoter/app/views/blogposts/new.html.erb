@@ -1,0 +1,101 @@
+<h4> Create a Blogpost</h4>
+
+<link href="https://cdn.quilljs.com/1.0.0-beta.0/quill.snow.css" rel="stylesheet">
+BlogpostTitle<br>
+<input id="atitle" type='text' name='title' placeholder="Title.."></input>
+
+<%= quill_editor nil, { name: 'content', id: 'acontent'} %>
+
+<br>
+<button id="send" class='btn pull-right btn-success'>Promote blogpost</button>
+
+
+
+<script>
+
+
+
+$("#send").click(function(){
+
+ var acontent = $('#acontent').val();
+ var atitle = $('#atitle').val();
+ var aauthor = "<%= current_blogger.email.to_s %>"
+ var user = <%= current_blogger.id %>
+
+
+
+$.ajax({
+	type : 'get',
+	url : '/blogposts/new',
+	data :  {blogpost : {content: acontent, title: atitle, author: aauthor, blogger_id: user}}
+})
+window.location.replace("/blogpost/blogger");
+});
+
+
+$(document).ready(function() {
+jQuery.fn.extend({
+
+
+
+	    insertAtCursor: function(myValue, myValue2) {
+	    	return this.each(function(i) {
+			    if (document.selection) {
+			      //For browsers like Internet Explorer
+			      this.focus();
+			      sel = document.selection.createRange();
+			      sel.text = myValue;
+			      this.focus();
+			    }
+			    else if (this.selectionStart || this.selectionStart == '0') {
+			      //For browsers like Firefox and Webkit based
+			      var startPos = this.selectionStart;
+			      var endPos = this.selectionEnd;
+			      var scrollTop = this.scrollTop;
+			      this.value +=myValue + "" + myValue2 
+                               
+			      this.focus();
+			      this.selectionStart = startPos + myValue.length;
+			      this.selectionEnd = startPos + myValue.length;
+			      this.scrollTop = scrollTop;
+
+			    } else {
+			      this.value += myValue;
+			      this.focus();
+			    }
+		  	})
+	    }
+    
+	})
+
+})
+var counter = 0;
+      $(document).ready(function(){
+            $("#acontent").keypress(function(e){
+            	var cursor = $("#acontent").prop("selectionStart")
+            	
+                if (e.which == 2 && counter % 2 == 0) 
+                {
+                	console.log(counter)
+                	counter ++;
+                   $("#acontent").insertAtCursor("<b>", "</b>");
+                }
+                else if (e.which == 2 && counter % 2 == 1) 
+                {
+                	counter ++;
+                	var SearchInput = $('#acontent');
+					SearchInput.val(SearchInput.val());
+					var strLength= SearchInput.val().length;
+					SearchInput.focus();
+					SearchInput[0].setSelectionRange(strLength, strLength);
+                }
+
+            });
+        });
+
+
+
+
+
+
+</script>
