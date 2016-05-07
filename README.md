@@ -1,5 +1,7 @@
 # Minimal blogger app
 
+![alt tag](http://moneymonkeys.org/pic/be6399e53e024354e61c116067b2157e.png)
+
 This is a leightweight rails app with some react.js demonstration code and funky code snippets. Be like a rainbow.
 
 just run ->
