@@ -25,5 +25,3 @@ Feel free to extend and fork the code.
 
 Best regards.
 
-
-![alt tag](http://moneymonkeys.org/pic/be6399e53e024354e61c116067b2157e.png)
